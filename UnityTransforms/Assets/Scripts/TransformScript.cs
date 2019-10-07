@@ -12,7 +12,6 @@ public class TransformScript : MonoBehaviour
     private Button ScaleButton, RotateButton, TranslateButton;
 
     private GameObject newSquare;
-    short scaleCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -31,22 +30,22 @@ public class TransformScript : MonoBehaviour
     void CreateSquare()
     {
         newSquare = Instantiate(Square, new Vector2(0, 0), Quaternion.identity);
+        newSquare.transform.localScale *= 5;
     }
 
     void RotateObject(GameObject g)
     {
-        g.transform.Rotate(90,0,0);
+        g.transform.Rotate(0, 0, 20, Space.Self);
     }
 
     void ScaleObject(GameObject g)
     {
-        if(scaleCount < 5)
-            g.transform.localScale *= new Vector2(2, 2);
-        scaleCount++;
+        g.transform.localScale *= new Vector2(2, 2); 
     }
 
     void TranslateObject(GameObject g)
     {
-        g.transform.Translate(new Vector2(1, 1));
+        g.transform.Translate(new Vector2(5, 5));
     }
+
 }
